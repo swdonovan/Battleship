@@ -21,7 +21,7 @@ class Battleship
 	end
 
 	def runner
-		
+		runner
 	end
 
 end
