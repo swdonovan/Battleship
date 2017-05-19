@@ -9,19 +9,16 @@ print "Welcome to BATTLESHIP"
 puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
 
 answer = gets.chomp
-answer = Battleship.new(arg)
+game = Battleship.new(answer)
 
 class Battleship
 
 	def initialize(arg)
-		play = play.new  if arg == "p" || "play"
+		play = play.new.start  if arg == "p" || "play"
 		quit = quit.new  if arg == "q" || "quit"
 		instruct = instructions.new if arg == "i" || "instructions"
 		runner
 	end
 
-	def runner
-		runner
-	end
 
 end
