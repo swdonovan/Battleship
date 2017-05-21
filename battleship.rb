@@ -15,8 +15,7 @@ puts "Welcome to BATTLESHIP"
 puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
 answer = gets.chomp
 
-if answer == "p" || answer == "play"
-	binding.pry
+if answer.downcase == "p" || answer.downcase == "play"
 	game = Battleship.new.play
 else
 	puts "thank you for not working"

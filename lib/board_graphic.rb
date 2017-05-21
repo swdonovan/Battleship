@@ -3,13 +3,18 @@ require_relative 'ship_library'
 
 class BoardGraphic
 	attr_reader :display
+							:print_it
 
-	# def initialize
-	# 	shiplib = ShipLibrary.new.shiplib
-	# end
+	def initialize(ship_library)
+		@comp_shiplib = (ship_library)
+	end
 
 	def display
 		print first_output
+	end
+
+	def print_it
+		form_sentence
 	end
 
 	def first_output
@@ -25,7 +30,8 @@ class BoardGraphic
 	end
 
 	def x_axis
-		top_row = [*97..106].join(',')
+		binding.pry
+		top_row = [*97..106]
 		top_row.each do |letter|
 			@sentence << letter.chr + " "
 		end
@@ -43,4 +49,4 @@ class BoardGraphic
 	end
 end
 
-test = BoardGraphic.new.first_output
+# test = BoardGraphic.new.first_output

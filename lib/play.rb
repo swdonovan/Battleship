@@ -5,17 +5,26 @@ require 'pry'
 class Play
 
 	def start
-		board = BoardGraphic.new.display
+		board = BoardGraphic.new(nil).display
 		print board
 		cpu_ship_placement
 		player_ship_placement
+		binding.pry
+		print_board
 	end
 
 	def cpu_ship_placement
-		comp_ship = ComputerShip.new.placement
+		@comp_ship = ComputerShip.new
+		@comp_ship.placement
 	end
 
 	def player_ship_placement
-		user_ship = PlayerShipPlacement.new.placement
+		@user_ship = PlayerShipPlacement.new
+		@user_ship.placement
+	end
+
+	def print_board
+		printer = BoardGraphic.new(@user_ship.shiplib.shiplib)
+		printer.print_it
 	end
 end

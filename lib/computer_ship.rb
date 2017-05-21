@@ -1,11 +1,14 @@
+require_relative '../lib/ship_library'
 require 'pry'
 
 class ComputerShip
-	attr_reader :ship_length,
-							:boat_numb
+	attr_reader :shiplib
+
+	def initialize
+		@shiplib = ShipLibrary.new
+	end
 
 	def placement
-		@shiplib = ShipLibrary.new.shiplib
 		cpu_ship_placement
 	end
 
@@ -58,9 +61,10 @@ class ComputerShip
 
 	def library_placement
 		until @selection.length == 0
-			@shiplib[@selection[1]][@selection[0]] << "C"
+			@shiplib.insert(@selection[1], @selection[0], "c")
 			@selection.shift(2)
 		end
 	end
+
 
 end
