@@ -12,7 +12,6 @@ class ComputerShip
 	def cpu_ship_placement
 		ship = rand(97..106), rand(1..10)
 		ship_length(ship[0], ship[1], 2)
-		binding.pry
 		library_placement
 	end
 
@@ -58,7 +57,6 @@ class ComputerShip
 	end
 
 	def library_placement
-		binding.pry
 		until @selection.length == 0
 			@shiplib[@selection[1]][@selection[0]] << "C"
 			@selection.shift(2)

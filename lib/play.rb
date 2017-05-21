@@ -1,5 +1,6 @@
 require_relative '../lib/board_graphic.rb'
 require_relative '../lib/computer_ship'
+require_relative '../lib/player_ship_placement'
 require 'pry'
 class Play
 
@@ -7,7 +8,6 @@ class Play
 		board = BoardGraphic.new.display
 		print board
 		cpu_ship_placement
-		binding.pry
 		player_ship_placement
 	end
 
@@ -19,5 +19,3 @@ class Play
 		user_ship = PlayerShipPlacement.new.placement
 	end
 end
-
-Play.new.start
