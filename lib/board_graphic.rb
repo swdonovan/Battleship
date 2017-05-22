@@ -29,27 +29,46 @@ class BoardGraphic
 		ship_library.keys.each do |num|
 			@sentence <<  "\n"
 			if ship_library[num].values.include? "P"
-				
-				space_index = ship_library[num].values.index "P"
-				x_placement(space_index, num)
+				multiple_x_vals(ship_library, num)
 			else
 				@sentence << ("#{num}" + "\n")
 			end
 		end
 	end
 
-
-	def x_placement(space_index, num)
-		binding.pry
-		space_index = -2 if space_index == 0
-		if space_index % 2 != 0
-			@sentence <<  "#{num}" + (" " * (space_index + 1)) + "P"
-		else
-			@sentence <<  "#{num}" + (" " * (space_index + 2)) + "P"
+	def multiple_x_vals(ship_library, num)
+		@last_index = nil
+		ship_library[num].values.each.with_index do |vals, index|
+			if vals == "P"
+				x_placement(index, num)
+			end
 		end
 	end
 
+
+	def x_placement(index, num)
+		binding.pry
+		space_index
+		spaces = @spaces[index - @last_index] if @last_index != nil
+		spaces = @spaces[0] if @last_index == nil
+		if @last_index == nil && index == 0
+			@sentence <<  "#{num}" + (" " * spaces) + "P"
+		elsif @last_index == nil && index != 0
+			@sentence <<  "#{num}" + (" " * (index * 2)) + "P"
+		else
+			@sentence <<  (" " * spaces) + "P"
+		end
+		@last_index = index
+	end
+
+	def space_index
+		binding.pry
+		@spaces = {0 => 0, 1 => 1, 2 => 2, 3 => 5, 4 => 5, 5 => 7,
+							 6 => 9, 7 => 13, 8 => 15, 9 => 17}
+	end
+
 end
+
 
 
 
