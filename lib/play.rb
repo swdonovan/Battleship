@@ -9,7 +9,6 @@ class Play
 		print board
 		cpu_ship_placement
 		player_ship_placement
-		binding.pry
 		print_board
 	end
 

@@ -20,22 +20,32 @@ class BoardGraphic
 	end
 
 	def print_it(ship_library)
-		@sentence = ("  A B C D E F G H I J")
+		@sentence = (" A B C D E F G H I J")
 		y_axis(ship_library)
 		@sentence
 	end
 
 	def y_axis(ship_library)
-		ship_library.keys.each.with_index do |num, index|
+		ship_library.keys.each do |num|
 			@sentence <<  "\n"
-			binding.pry
 			if ship_library[num].values.include? "P"
+				
 				space_index = ship_library[num].values.index "P"
-				space_index = 1 if space_index == 0
-				@sentence <<  "#{num}" + (" " * (space_index +6)) + "P"
+				x_placement(space_index, num)
 			else
-				@sentence << (+ "#{num}" + "\n")
+				@sentence << ("#{num}" + "\n")
 			end
+		end
+	end
+
+
+	def x_placement(space_index, num)
+		binding.pry
+		space_index = -2 if space_index == 0
+		if space_index % 2 != 0
+			@sentence <<  "#{num}" + (" " * (space_index + 1)) + "P"
+		else
+			@sentence <<  "#{num}" + (" " * (space_index + 2)) + "P"
 		end
 	end
 
