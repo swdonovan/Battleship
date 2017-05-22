@@ -20,43 +20,43 @@ class BoardGraphic
 		"9" + "\n" + "10" + "\n"
 	end
 
-	def print_it(ship_library)
+	def print_it(ship_library, letter)
 		@sentence = (" A B C D E F G H I J")
-		y_axis(ship_library)
+		y_axis(ship_library, letter)
 		print @sentence
 	end
 
-	def y_axis(ship_library)
+	def y_axis(ship_library, letter)
 		ship_library.keys.each do |num|
 			@sentence <<  "\n"
-			if ship_library[num].values.include? "P"
-				multiple_x_vals(ship_library, num)
+			if ship_library[num].values.include? letter
+				multiple_x_vals(ship_library, num, letter)
 			else
 				@sentence << ("#{num}")
 			end
 		end
 	end
 
-	def multiple_x_vals(ship_library, num)
+	def multiple_x_vals(ship_library, num, letter)
 		@last_index = nil
 		ship_library[num].values.each.with_index do |vals, index|
-			if vals == "P"
-				x_placement(index, num)
+			if vals == letter
+				x_placement(index, num, letter)
 			end
 		end
 	end
 
 
-	def x_placement(index, num)
+	def x_placement(index, num, letter)
 		space_index
 		spaces = @spaces[index - @last_index] if @last_index != nil
 		spaces = @spaces[0] if @last_index == nil
 		if @last_index == nil && index == 0
-			@sentence <<  "#{num}" + (" " * spaces) + "P"
+			@sentence <<  "#{num}" + (" " * spaces) + letter
 		elsif @last_index == nil && index != 0
-			@sentence <<  "#{num}" + (" " * (index * 2)) + "P"
+			@sentence <<  "#{num}" + (" " * (index * 2)) + letter
 		else
-			@sentence <<  (" " * spaces) + "P"
+			@sentence <<  (" " * spaces) + letter
 		end
 		@last_index = index
 	end

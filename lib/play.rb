@@ -26,7 +26,7 @@ class Play
 
 	def print_board
 		printer = BoardGraphic.new
-		printer.print_it(@user_ship.shiplib.shiplib)
+		printer.print_it(@user_ship.shiplib.shiplib, "P")
 	end
 
 	def fire_away
