@@ -3,7 +3,7 @@ require 'pry'
 
 class PlayerShipPlacement
 	attr_reader :shiplib
-	
+
 	def initialize
 		@shiplib = ShipLibrary.new
 	end
@@ -36,6 +36,7 @@ class PlayerShipPlacement
 
 	def check(answer)
 		num_check = *(1..10)
+		binding.pry
 		@new_answer = answer.split.join.scan(/.{1}/)
 		@new_answer.each.with_index do |input, index|
 			if index % 2 == 0

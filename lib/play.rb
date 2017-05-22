@@ -1,6 +1,7 @@
 require_relative '../lib/board_graphic.rb'
 require_relative '../lib/computer_ship'
 require_relative '../lib/player_ship_placement'
+require_relative '../lib/shot_sequence'
 require 'pry'
 class Play
 
@@ -10,6 +11,7 @@ class Play
 		cpu_ship_placement
 		player_ship_placement
 		print_board
+		fire_away
 	end
 
 	def cpu_ship_placement
@@ -25,6 +27,10 @@ class Play
 	def print_board
 		printer = BoardGraphic.new
 		printer.print_it(@user_ship.shiplib.shiplib)
-		printer
+	end
+
+	def fire_away
+		fire = ShotSequence.new(@user_ship.shiplib.shiplib, @comp_ship.shiplib.shiplib)
+		fire.shoot
 	end
 end

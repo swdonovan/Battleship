@@ -13,7 +13,6 @@ class ComputerShip
 		cpu_ship_placement(3)
 		cpu_ship_placement(3)
 		cpu_ship_placement(4)
-		binding.pry
 		cpu_ship_placement(5)
 	end
 

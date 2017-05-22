@@ -2,8 +2,9 @@ require 'pry'
 require_relative 'ship_library'
 
 class BoardGraphic
-	attr_reader :display
-							:print_it
+	attr_reader :display,
+							:print_it,
+							:sentence
 
 	# def initialize(ship_library)
 	#
@@ -22,7 +23,7 @@ class BoardGraphic
 	def print_it(ship_library)
 		@sentence = (" A B C D E F G H I J")
 		y_axis(ship_library)
-		@sentence
+		print @sentence
 	end
 
 	def y_axis(ship_library)
@@ -31,7 +32,7 @@ class BoardGraphic
 			if ship_library[num].values.include? "P"
 				multiple_x_vals(ship_library, num)
 			else
-				@sentence << ("#{num}" + "\n")
+				@sentence << ("#{num}")
 			end
 		end
 	end
@@ -47,7 +48,6 @@ class BoardGraphic
 
 
 	def x_placement(index, num)
-		binding.pry
 		space_index
 		spaces = @spaces[index - @last_index] if @last_index != nil
 		spaces = @spaces[0] if @last_index == nil
@@ -62,9 +62,8 @@ class BoardGraphic
 	end
 
 	def space_index
-		binding.pry
-		@spaces = {0 => 0, 1 => 1, 2 => 2, 3 => 5, 4 => 5, 5 => 7,
-							 6 => 9, 7 => 13, 8 => 15, 9 => 17}
+		@spaces = {0 => 0, 1 => 1, 2 => 3, 3 => 5, 4 => 7, 5 => 9,
+							 6 => 11, 7 => 13, 8 => 15, 9 => 17}
 	end
 
 end
