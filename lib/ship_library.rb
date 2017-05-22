@@ -1,5 +1,6 @@
 class ShipLibrary
-	attr_accessor :shiplib
+	attr_accessor :shiplib,
+								:insert
 
 	def initialize
 		@shiplib =

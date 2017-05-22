@@ -11,12 +11,16 @@ class ComputerShip
 	def placement
 		cpu_ship_placement(2)
 		cpu_ship_placement(3)
+		cpu_ship_placement(3)
+		cpu_ship_placement(4)
+		binding.pry
+		cpu_ship_placement(5)
 	end
 
 	def cpu_ship_placement(ship_size)
 		ship = rand(97..106), rand(1..10)
 		ship_length(ship[0], ship[1], ship_size)
-		library_placement
+		library_placement(ship_size)
 	end
 
 	def selection(start_lett, start_num)
@@ -56,9 +60,8 @@ class ComputerShip
 	end
 
 	def three_plus_placement
-		binding.pry
 		if @selection[0] == @selection[-2]
-			@start_comb << selection[0]
+			@start_comb << @selection[0]
 		elsif @selection[0] < @selection[-2]
 			@start_comb << (@selection[-2] + 1) if @selection[-2] != 106
 			@start_comb << (@selection[0] - 1) if @selection[-2] == 106
@@ -70,7 +73,7 @@ class ComputerShip
 
 	def boat_numb(start_num)
 		last_num = []
-		if @start_comb[0] == @selection[0] && (start_num != 1 || start_num != 10)
+		if (start_num != 1 || start_num != 10) && @start_comb[0] == @selection[0]
 			last_num << (start_num - 1) << (start_num + 1)
 			@start_comb << last_num.sample
 		elsif @start_comb[0] == @selection[0] && start_num == 1
@@ -84,11 +87,25 @@ class ComputerShip
 		@counter += 1
 	end
 
-	def library_placement
+	def library_placement(ship_size)
+		check(ship_size)
+		@selection.flatten!
 		until @selection.length == 0
 			@shiplib.insert(@selection[1], @selection[0], "c")
 			@selection.shift(2)
 		end
+	end
+
+	def check(ship_size)
+		selections = []
+		until @selection.length == 0
+			if @shiplib.shiplib[@selection[1]][@selection[0]] == "c"
+				cpu_ship_placement(ship_size)
+			else
+				selections << @selection.shift(2)
+			end
+		end
+		@selection << selections.flatten
 	end
 
 
