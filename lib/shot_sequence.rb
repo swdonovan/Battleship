@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'quit'
 
 class ShotSequence
 
@@ -22,7 +23,7 @@ class ShotSequence
 
 	def player_shoot(library = @comp_library)
 		p_shots = []
-		puts "\n" + "Please enter coordinates to fire at" + "\n"
+		print "\n" + "Please enter coordinates to fire at" + "\n"
 		p_shots = gets.chomp.downcase.split(//,2)
 		p_shots[0] = p_shots[0].ord
 		if [*97..106].include?(p_shots[0]) && [*1..10].include?(p_shots[1].to_i)
@@ -69,6 +70,7 @@ class ShotSequence
 	end
 
 	def win_check(library, letter)
+		binding.pry
 		library.keys.each.with_index do |key, index|
 			if library[key].values.include?letter
 				return
@@ -81,6 +83,6 @@ class ShotSequence
 	def exit_scenario(library)
 		print "You WIN" if library == @comp_library
 		print "You LOSE!" if library == @user_library
-		exit
+		internal_quit
 	end
 end

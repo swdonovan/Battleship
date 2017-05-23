@@ -99,6 +99,7 @@ class ComputerShip
 	def check(ship_size)
 		selections = []
 		until @selection.length == 0
+			binding.pry
 			if @shiplib.shiplib[@selection[1]][@selection[0]] == "c"
 				cpu_ship_placement(ship_size)
 			else

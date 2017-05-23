@@ -31,11 +31,11 @@ class PlayerShipPlacement
 		print "Please choose 4 adjacent coordinates to place your Submarine at" + "\n"
 			answer = gets.chomp
 			letter_adjust(answer)
-			
+
 			insert_into_library
 	end
 
-	def letter_adjust(answer)
+	def check(answer)
 		@new_answer = answer.split.join.scan(/.{1}/)
 		@new_answer.each.with_index do |input, index|
 			if index % 2 == 0
