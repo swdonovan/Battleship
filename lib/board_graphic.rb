@@ -6,10 +6,6 @@ class BoardGraphic
 							:print_it,
 							:sentence
 
-	# def initialize(ship_library)
-	#
-	# end
-
 	def display
 		print first_output
 	end
@@ -46,7 +42,6 @@ class BoardGraphic
 			end
 		end
 	end
-
 
 	def x_placement(index, num, letter)
 		space_index

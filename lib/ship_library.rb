@@ -19,5 +19,4 @@ class ShipLibrary
 	def insert(key, value, char)
 		@shiplib[key][value] << char
 	end
-
 end

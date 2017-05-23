@@ -30,12 +30,14 @@ class ShotSequence
 		else
 			player_shoot
 		end
+		win_check(library, "c")
 		@counter += 1
 	end
 
 	def comp_shoot(library = @user_library)
 		shots = [rand(97..106), rand(1..10)]
 		insert(shots, library)
+		win_check(library, "P")
 		@counter = 0
 	end
 
@@ -54,7 +56,6 @@ class ShotSequence
 	end
 
 	def hit_check(shots, library)
-		binding.pry
 		if library[shots[1].to_i][shots[0].to_i] == "P"
 			board.print_it(library, "X")
 			print "Your Ship has been HIT!" + "\n"
@@ -67,4 +68,19 @@ class ShotSequence
 		end
 	end
 
+	def win_check(library, letter)
+		library.keys.each.with_index do |key, index|
+			if library[key].values.include?letter
+				return
+			elsif key == 10 && index == 9
+				exit_scenario(library)
+			end
+		end
+	end
+
+	def exit_scenario(library)
+		print "You WIN" if library == @comp_library
+		print "You LOSE!" if library == @user_library
+		exit
+	end
 end

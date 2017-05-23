@@ -2,7 +2,8 @@ require_relative '../lib/ship_library'
 require 'pry'
 
 class ComputerShip
-	attr_reader :shiplib
+	attr_reader :shiplib,
+							:placement
 
 	def initialize
 		@shiplib = ShipLibrary.new
@@ -106,6 +107,4 @@ class ComputerShip
 		end
 		@selection << selections.flatten
 	end
-
-
 end
