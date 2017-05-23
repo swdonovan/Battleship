@@ -23,6 +23,7 @@ class BoardGraphic
 	def print_it(ship_library, letter)
 		@sentence = (" A B C D E F G H I J")
 		y_axis(ship_library, letter)
+		@sentence << "\n"
 		print @sentence
 	end
 

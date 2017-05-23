@@ -54,6 +54,7 @@ class ShotSequence
 	end
 
 	def hit_check(shots, library)
+		binding.pry
 		if library[shots[1].to_i][shots[0].to_i] == "P"
 			board.print_it(library, "X")
 			print "Your Ship has been HIT!" + "\n"
@@ -61,7 +62,7 @@ class ShotSequence
 			board.print_it(library, "X")
 			print "HIT!!" + "\n"
 		else
-			board.print_int(library, "X")
+			board.print_it(library, "X")
 			print "MISS!" + "\n"
 		end
 	end
