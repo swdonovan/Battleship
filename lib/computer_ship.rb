@@ -12,6 +12,7 @@ class ComputerShip
 	def placement
 		cpu_ship_placement(2)
 		cpu_ship_placement(3)
+		binding.pry
 		cpu_ship_placement(3)
 		cpu_ship_placement(4)
 		cpu_ship_placement(5)
@@ -42,7 +43,7 @@ class ComputerShip
 		if @counter < 2
 			two_peg_placement(start_lett)
 		else
-			three_plus_placement
+			three_plus_letters
 		end
 	end
 
@@ -59,7 +60,7 @@ class ComputerShip
 		end
 	end
 
-	def three_plus_placement
+	def three_plus_letters
 		if @selection[0] == @selection[-2]
 			@start_comb << @selection[0]
 		elsif @selection[0] < @selection[-2]
@@ -73,6 +74,8 @@ class ComputerShip
 
 	def boat_numb(start_num)
 		last_num = []
+		# if counter > 2
+		# 	three_plus_numbers
 		if (start_num != 1 || start_num != 10) && @start_comb[0] == @selection[0]
 			last_num << (start_num - 1) << (start_num + 1)
 			@start_comb << last_num.sample
@@ -99,7 +102,6 @@ class ComputerShip
 	def check(ship_size)
 		selections = []
 		until @selection.length == 0
-			binding.pry
 			if @shiplib.shiplib[@selection[1]][@selection[0]] == "c"
 				cpu_ship_placement(ship_size)
 			else
