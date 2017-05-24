@@ -11,11 +11,10 @@ class ComputerShip
 
 	def placement
 		cpu_ship_placement(2)
-		cpu_ship_placement(3)
-		binding.pry
-		cpu_ship_placement(3)
-		cpu_ship_placement(4)
-		cpu_ship_placement(5)
+		# cpu_ship_placement(3)
+		# cpu_ship_placement(3)
+		# cpu_ship_placement(4)
+		# cpu_ship_placement(5)
 	end
 
 	def cpu_ship_placement(ship_size)

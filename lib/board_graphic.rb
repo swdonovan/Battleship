@@ -16,7 +16,7 @@ class BoardGraphic
 		"9" + "\n" + "10" + "\n"
 	end
 
-	def print_it(ship_library, letter)
+	def print_it(ship_library, letter, second_letter = nil)
 		@sentence = (" A B C D E F G H I J")
 		y_axis(ship_library, letter)
 		@sentence << "\n"
@@ -38,7 +38,7 @@ class BoardGraphic
 		@last_index = nil
 		ship_library[num].values.each.with_index do |vals, index|
 			if vals == letter
-				x_placement(index, num, letter)
+				x_placement(index, num, vals)
 			end
 		end
 	end

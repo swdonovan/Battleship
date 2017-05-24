@@ -2,10 +2,14 @@ require 'pry'
 require_relative 'quit'
 
 class ShotSequence
+	include Quit
 
 	def initialize(user_ship_library, computer_ship_library)
 		@user_library = user_ship_library
 		@comp_library = computer_ship_library
+		@start_time = Time.now
+		@shot_count_user = 0
+		@shot_count_comp = 0
 	end
 
 	def board
@@ -17,7 +21,9 @@ class ShotSequence
 		@counter = 0
 		board.print_it(@comp_library, "X")
 		player_shoot if @counter == 0
+		@shot_count_user += 1
 		comp_shoot if @counter == 1
+		@shot_count_comp +=1
 		shoot
 	end
 
@@ -75,14 +81,22 @@ class ShotSequence
 			if library[key].values.include?letter
 				return
 			elsif key == 10 && index == 9
+				@end_time = Time.now
 				exit_scenario(library)
 			end
 		end
 	end
 
 	def exit_scenario(library)
-		print "You WIN" if library == @comp_library
-		print "You LOSE!" if library == @user_library
-		internal_quit
+		time
+
+		puts "You WIN" if library == @comp_library
+		puts "You LOSE!" if library == @user_library
+		internal_quit(@final_time, @shot_counter_user, @shot_count_comp)
 	end
+
+	def time
+		@final_time = @end_time - @start_time
+	end
+
 end

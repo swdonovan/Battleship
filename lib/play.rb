@@ -2,10 +2,9 @@ require_relative '../lib/board_graphic.rb'
 require_relative '../lib/computer_ship'
 require_relative '../lib/player_ship_placement'
 require_relative '../lib/shot_sequence'
-require_relative '../lib/quit'
+# require_relative '../lib/quit'
 require 'pry'
 class Play
-	include Quit
 
 	def start
 		board = BoardGraphic.new.display
