@@ -69,3 +69,4 @@ end
 
 # test = BoardGraphic.new.first_output
 #
+#

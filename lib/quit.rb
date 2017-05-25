@@ -11,5 +11,3 @@ module Quit
 		exit!
 	end
 end
-
-#
