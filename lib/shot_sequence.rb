@@ -17,13 +17,15 @@ class ShotSequence
 	end
 
 	def shoot
+		clear
 		board
 		@counter = 0
+		clear
 		board.print_it(@comp_library, "X")
 		player_shoot if @counter == 0
 		@shot_count_user += 1
 		comp_shoot if @counter == 1
-		@shot_count_comp +=1
+		@shot_count_comp += 1
 		shoot
 	end
 
@@ -55,9 +57,9 @@ class ShotSequence
 	end
 
 	def check(shots, library)
-		if library[shots[1].to_i][shots[0].to_i] == "X" && library = @user_library
+		if library[shots[1].to_i][shots[0].to_i] == "X" && library == @user_library
 			comp_shoot
-		elsif library[shots[1].to_i][shots[0].to_i] == "X" && library = @comp_library
+		elsif library[shots[1].to_i][shots[0].to_i] == "X" && library == @comp_library
 			player_shoot
 		end
 	end
@@ -76,7 +78,6 @@ class ShotSequence
 	end
 
 	def win_check(library, letter)
-		binding.pry
 		library.keys.each.with_index do |key, index|
 			if library[key].values.include?letter
 				return
@@ -89,14 +90,19 @@ class ShotSequence
 
 	def exit_scenario(library)
 		time
-
 		puts "You WIN" if library == @comp_library
 		puts "You LOSE!" if library == @user_library
-		internal_quit(@final_time, @shot_counter_user, @shot_count_comp)
+		internal_quit(@final_time, @shot_count_user, @shot_count_comp)
 	end
 
 	def time
+		binding.pry
 		@final_time = @end_time - @start_time
+		@final_time(@final_time / 60)
+	end
+
+	def clear
+		puts `clear`
 	end
 
 end
