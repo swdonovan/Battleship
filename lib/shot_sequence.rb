@@ -17,7 +17,6 @@ class ShotSequence
 	end
 
 	def shoot
-		clear
 		board
 		@counter = 0
 		clear
@@ -96,9 +95,17 @@ class ShotSequence
 	end
 
 	def time
-		binding.pry
 		@final_time = @end_time - @start_time
-		@final_time(@final_time / 60)
+		@final_time = (@final_time / 60)
+		time_conversion(@final_time)
+	end
+
+	def time_conversion(total_seconds)
+		seconds = total_seconds % 60
+		minutes = (total_seconds / 60) % 60
+		hours = total_seconds / (60 * 60)
+
+		@final_time = format("%02d:%02d:%02d", hours, minutes, seconds)
 	end
 
 	def clear
